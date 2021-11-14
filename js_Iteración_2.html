@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 class="fn-insert-here"></h2>
+    <p class="fn-remove-me">Eliminame!</p>
+    <p>No me elimines!</p>
+    <p>No me elimines!</p>
+    <p class="fn-remove-me">Eliminame!</p>
+    <p>No me elimines!</p>
+    <p class="fn-remove-me">Eliminame!</p>
+    <p class="fn-remove-me">Eliminame!</p>
+    <p>No me elimines!</p>
+    <div></div>
+    <div></div>
+    <div class="fn-insert-here"></div>
+    <div class="fn-insert-here"></div>
+
+
+    <script>
+        // Trabajamos el JS directamente en el HTML.
+
+
+        // 2.1 Inserta dinamicamente en un html un div vacio con javascript.
+
+        function addContent() {
+            // crea un nuevo div y añade contenido
+            var newDiv = document.createElement('div');
+            var newContent = document.createTextNode('Hola! ¿Qué tal?');
+            // añade texto al div creado.
+            newDiv.appendChild(newContent);
+            // añade el elemento creado y su contenido al DOM
+            var currentDiv = document.getElementById('div-uno');
+            document.body.insertBefore(newDiv, currentDiv);
+        }
+
+        // Meto un div con contenido para saber que se esta creando.
+        addContent();
+
+        // 2.2 Inserta dinamicamente en un html un div que contenga una p con javascript.
+        function addContentDos() {
+            // crea un nuevo div y añade contenido
+            var newDivDos = document.createElement('div');
+            var newPDos = document.createElement('p');
+            var newContentDos = document.createTextNode('Hola! ¿Qué tal? Iteración 2.2');
+            // añade texto al div creado.
+            newPDos.appendChild(newContentDos);
+            newDivDos.appendChild(newPDos);
+            // añade el elemento creado y su contenido al DOM
+            var currentDivDos = document.getElementById('div-dos');
+            document.body.insertBefore(newDivDos, currentDivDos);
+        }
+        // Meto un div y p con contenido para saber que se esta creando.
+        addContentDos();
+
+        // 2.3 Inserta dinamicamente en un html un div que contenga 6 p utilizando un loop con javascript.
+
+        function addContentTres() {
+            // crea un nuevo div y añade contenido
+            const newDivTres = document.createElement('div');
+            for (var index = 0; index < 6; index++) {
+                newDivTres.innerHTML += `<p> Añadimos linea ${index}</p>`
+            }
+            // añade el elemento creado y su contenido al DOM
+            var currentDivTres = document.getElementById('div-tres');
+            document.body.insertBefore(newDivTres, currentDivTres);
+        }
+        // Meto un div y p con contenido para saber que se esta creando.
+        addContentTres();
+
+
+        // 2.4 Inserta dinamicamente con javascript en un html una p con el texto 'Soy dinámico!'.
+        const newPCuatro = document.createElement('p');
+        const textoP = document.createTextNode('Soy dinamico');
+        newPCuatro.appendChild(textoP);
+        document.body.appendChild(newPCuatro);
+
+
+        // 2.5 Inserta en el h2 con la clase .fn-insert-here el texto 'Wubba Lubba dub dub'.
+        const h2 = document.querySelector('h2');
+        // h2.textContent = 'Wubba Lubba dub dub'; // Forma 1
+        h2.innerHTML = 'Wubba Lubba dub dub';  // Forma 2
+
+
+
+        // 2.6 Basandote en el siguiente array crea una lista ul > li con los textos del array.
+        // const apps = ['Facebook', 'Netflix', 'Instagram', 'Snapchat', 'Twitter'];
+
+        var newLista = document.createElement('ul');
+
+        const apps = ['Facebook', 'Netflix', 'Instagram', 'Snapchat', 'Twitter'];
+
+        apps.forEach(element => {
+            console.log(element);
+            newLista.innerHTML += `<li>${element}</li>`
+        });
+        var currentLista = document.getElementById('lista');
+        document.body.insertBefore(newLista, currentLista);
+
+
+        // 2.7 Elimina todos los nodos que tengan la clase .fn-remove-me
+        // const elementosABorrar = document.getElementsByClassName("fn-remove-me")
+        // const elementosABorrar = document.querySelectorAll('.fn-remove-me')
+        // console.log(elementosABorrar)
+        // elementosABorrar.parentNode.removeChild(elementosABorrar);
+        
+
+        // 2.8 Inserta una p con el texto 'Voy en medio!' entre los dos div. 
+        // 	Recuerda que no solo puedes insertar elementos con .appendChild.
+        const entreDiv = document.querySelector('div');
+        const entreP = document.createElement('p');
+        var newContenido = document.createTextNode('Voy en medio!');
+        entreP.appendChild(newContenido);
+        entreDiv.appendChild(entreP);
+
+
+        // 2.9 Inserta p con el texto 'Voy dentro!', dentro de todos los div con la clase .fn-insert-here
+
+        const entreDivClase = document.getElementsByClassName('fn-insert-here');
+        console.log(entreDivClase);
+        const entrePP = document.createElement('p');
+        var newContenidoDos = document.createTextNode('Voy dentro!');
+        entrePP.appendChild(newContenidoDos);
+        entreDivClase.appendChild(entrePP);
+
+
+
+    </script>
+
+</body>
+
+</html>
